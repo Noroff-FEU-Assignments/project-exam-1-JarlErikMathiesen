@@ -1,0 +1,159 @@
+/* Global values */
+
+:root {
+    --yellow: #DEE208;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+header {
+	position: relative;
+	display: grid;
+	background-color: var(--yellow);
+	padding: 10px;
+	font-size: 1.5rem;
+}
+
+footer {
+    background-color: var(--yellow);
+    margin-top: auto;
+}
+
+
+
+/* a:link,
+a:visited {
+    text-decoration: none; 
+    color: inherit;
+} */
+
+.logo {
+	grid-column: 2;
+	/* color: inherit; */
+	justify-self: end;
+}
+
+.hamburger-icon {
+	grid-row: 1;
+}
+
+nav {
+    position: absolute;
+    background: var(--yellow);
+    left: 0px;
+}
+
+nav a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+
+.logo-main{
+    width: 90px;
+}
+
+nav,
+#menu-checkbox {
+  display: none;
+}
+
+#menu-checkbox:checked ~ nav {
+	display: block;
+}
+
+/* Main page */
+
+.pre-btn, .nxt-btn{
+    display: none;
+}
+
+.blog-card-main {
+    display: grid;
+    justify-items: center;
+    border-radius: 25px;
+    margin: 10px 20px 40px;
+    padding: 15px;
+    border: 2px solid;
+}
+
+
+
+
+@media (min-width: 600px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    nav {
+        display: flex;
+        position:static; 
+    } 
+
+    .hamburger-icon {
+        display: none;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .pre-btn,
+    .nxt-btn {
+      border: none;
+      width: 10vw;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+    }
+    
+    .pre-btn {
+      left: 0;      
+      background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    }
+    
+    .nxt-btn {
+      right: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+    }
+    
+    .pre-btn img,
+    .nxt-btn img {
+      opacity: 0.5;
+    }
+    
+    .pre-btn:hover img,
+    .nxt-btn:hover img {
+      opacity: 1;
+    }
+
+
+    .blog-main {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .blog-container {
+        display:flex;
+        overflow: hidden;
+    }
+
+    .blog-card-main {
+        overflow: hidden;
+        min-width: 450px;
+    }
+
+}
