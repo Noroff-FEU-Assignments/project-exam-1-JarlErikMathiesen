@@ -2,6 +2,12 @@
 
 :root {
     --yellow: #DEE208;
+
+    /* CSS HEX */
+    --black: #000000ff;
+    --aureolin: #ECE90Eff;
+    --jonquil: #FFD000ff;
+
 }
 
 body {
@@ -9,28 +15,35 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0px;
+    font-family: Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg);
+    background-position: center;
+}
+
+h1 {
+    font-family: Shrikhand, Urbanist, Verdana, Geneva, Tahoma, sans-serif;
 }
 
 header {
 	position: relative;
 	display: grid;
-	background-color: var(--yellow);
+	background-color: var(--aureolin);
 	padding: 10px;
 	font-size: 1.5rem;
 }
 
 footer {
-    background-color: var(--yellow);
+    background-color: var(--aureolin);
     margin-top: auto;
 }
 
 
 
-/* a:link,
+a:link,
 a:visited {
     text-decoration: none; 
     color: inherit;
-} */
+}
 
 .logo {
 	grid-column: 2;
@@ -44,7 +57,7 @@ a:visited {
 
 nav {
     position: absolute;
-    background: var(--yellow);
+    background: var(--aureolin);
     left: 0px;
 }
 
@@ -74,16 +87,109 @@ nav,
     display: none;
 }
 
-.blog-card-main {
+.blog-card-main,
+.blog-card-blogs {
     display: grid;
     justify-items: center;
     border-radius: 25px;
     margin: 10px 20px 40px;
     padding: 15px;
     border: 2px solid;
+    background-color: #fff;
+}
+
+.h1-main {
+    text-align: center;
+    color: #fff;
+}
+
+/* Blog page */
+
+.blog-card-blog {
+    display: grid;
+    justify-items: center;
+    border-radius: 25px;
+    margin: 10px 20px 40px;
+    padding: 15px;
+    border: 2px solid;
+    background-color: #fff;
 }
 
 
+/* Contact page */
+
+.main-contact {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+
+label {
+    color: #fff;
+}
+
+input {
+    font-size: inherit;
+}
+
+form {
+    display:flex;
+    flex-direction:column;
+}
+
+form span {
+	font-size: 20px;
+	margin-bottom: 10px;
+	background-color: var(--aureolin);
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.input-style {
+	border-radius: 10px;
+	padding: 5px 5px 5px 5px;
+
+}
+
+.input-message {
+	padding-bottom: 200px;
+}
+
+.form-error {
+    display: none;
+    color: red;
+    background: #000000;
+}
+
+span label {
+	color: #fff;
+	display: inline-block;
+	min-width: 95px;
+	background-color: black;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+.submit-button {
+	cursor: pointer;
+	padding: 20px;
+	border: 2px solid var(--aureolin);
+	border-radius: 10px;
+	background-color: var(--aureolin);
+	font-family: Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 20px;
+    align-self: center;
+}
+
+@media (min-width: 300px) {
+    
+    .input-style {
+        padding: 5px 100px 5px 5px;
+    }
+}
 
 
 @media (min-width: 600px) {
@@ -109,29 +215,29 @@ nav,
     .pre-btn,
     .nxt-btn {
       border: none;
-      width: 10vw;
+      width: 100px;
       height: 100%;
       position: absolute;
-      top: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-
       cursor: pointer;
+      
     }
     
-    .pre-btn {
-      left: 0;      
-      background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    }
-    
-    .nxt-btn {
-      right: 0;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-    }
+    .pre-btn {  
+        background: transparent;
+      }
+      
+      .nxt-btn {
+        right: 0;
+        background: transparent;
+      }
+
     
     .pre-btn img,
     .nxt-btn img {
+      height: 6rem;
       opacity: 0.5;
     }
     
@@ -139,7 +245,6 @@ nav,
     .nxt-btn:hover img {
       opacity: 1;
     }
-
 
     .blog-main {
         position: relative;
@@ -156,4 +261,14 @@ nav,
         min-width: 450px;
     }
 
+    .blogs-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .blog-card-blogs {
+        overflow: hidden;
+        max-width: 250px;
+        max-height: 250px;
+    }
 }

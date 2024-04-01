@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="contact">
+    <meta name="description" content="The main page of Myblog">
     <link href="css/styles.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/cadf1bec62.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <script defer type="module" src="JS/contact.js"></script>
     <title>Myblog | Contact</title>
 </head>
 <body>
@@ -17,12 +21,35 @@
         <nav role="navigation" class="nav-header">
                 <a href ="index.html">Main</a>
                 <a href ="blogs.html">Blogs</a>
-                <a href ="blog.htm">Blog</a>
                 <a href ="contact.html">Contact</a>
                 <a href ="about.html">About</a>
         </nav>
     </header>
-    <main>
+    <main class="main-contact">
+        <h1 class="h1-main">Contact</h1>
+        <form id="contactForm">
+            <span>
+                <label for="name">NAME</label>
+                <input class="input-style" type="text" name="name" id="name">
+                <span class="form-error" id="name-error">Your name must be more than 5 characters long</span>
+            </span>
+            <span>
+                <label for="email">E-MAIL</label>
+                <input class="input-style" type="email" name="email" id="email">
+                <span class="form-error" id="email-error">Must be a valid email address</span>
+            </span>
+            <span>
+                <label for="subject">SUBJECT</label>
+                <input class="input-style" type="text" name="subject" id="subject">
+                <span class="form-error" id="subject-error">Subject should be more than 15 characters long</span>
+            </span>
+            <span>
+                <label for="message">MESSAGE</label>
+                <input class="input-style input-message" type="text" name="message" id="message">
+                <span class="form-error" id="message-error">Message should be more than 25 characters long</span>
+            </span>
+            <button id="sub-btn" class="submit-button">SUBMIT</button>
+        </form>
     </main>
     <footer>
         <p>By Jarl Erik Mathiesen</p>
