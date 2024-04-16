@@ -1,7 +1,11 @@
-import { getBlogPosts } from '/JS/getBlogPosts.js';
+import { getBlogPosts } from '/JS/functions.js';
+import { toggleNavDisplay } from '/JS/functions.js';
+import { hamburgerMenu } from '/JS/functions.js';
+import { navDisplay } from '/JS/functions.js';
+
 const baseUrl = "http://jarlerm.no/wp-json/wp/v2/posts";
 
-const blogPosts = document.querySelector(".blog-container");
+const blogPosts = document.querySelector(".blog-container-single");
 
 const urlPar = new URLSearchParams(document.location.search);
 const id = urlPar.get("id");
@@ -25,25 +29,27 @@ async function displayBlogPosts() {
             let imageHtml = '';
         
             if (posts._embedded && posts._embedded["wp:featuredmedia"] && posts._embedded["wp:featuredmedia"][0]) {
+                
                 const postImage = posts._embedded["wp:featuredmedia"][0].link;
                 const postImageAltText = posts._embedded["wp:featuredmedia"][0].alt_text;
 
-                imageHtml = `<div id="imageModal" class="modal">
-                                <img class="modal-content" id="modalImage" src="${postImage}" alt="${postImageAltText}">
-                            </div>
-                            <img class="blog-image" src="${postImage}" alt="${postImageAltText}" />`;
+                imageHtml = `<div>
+                                <div id="imageModal" class="modal">
+                                    <img class="modal-content" id="modalImage" src="${postImage}" alt="${postImageAltText}">
+                                </div>
+                                <img class="blog-image blog-card blog-card-blog" src="${postImage}" alt="${postImageAltText}" />
+                            </div>`;
             }
         
             blogPosts.innerHTML += `
-                <div class="blog-card-blog">
+                ${imageHtml}
+                <div class="blog-card blog-card-blog">
                     <h2>${postTitle}</h2>
                     <p>Author: ${postAuthor}</p>
                     ${postContent}
-                    ${imageHtml}
-                </div>
+                    </div>
             `;
-        }
-        
+        }   
 
         createHtml(posts);
 
@@ -65,19 +71,12 @@ async function displayBlogPosts() {
                 document.body.classList.remove("modal-open");
             }
         };
+
     } catch (error) {
-        console.error(error);
+        blogPosts.innerHTML = `<h2 class="error">An error has occurred while loading the page</h2>`;
     }
 }
 
 displayBlogPosts();
 
-
-
-
-
-
-
-
-
-/* const postImage = posts._embedded["wp:featuredmedia"][0].link */
+toggleNavDisplay(hamburgerMenu, navDisplay, 700);

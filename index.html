@@ -6,8 +6,7 @@
     <meta name="description" content="The main page of Myblog">
     <link href="css/styles.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cadf1bec62.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&amp;&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <script defer type="module" src="JS/index.js"></script>
     <title>Myblog | Main page</title>
 </head>
@@ -16,8 +15,7 @@
         <a href="index.html" class="logo">
             <img src="images/Myblog.png" alt="logo for myblog" class="logo-main">
         </a>
-        <input type="checkbox" id="menu-checkbox">
-        <label for="menu-checkbox" class="hamburger-icon"><i class="fas fa-bars"></i></label>
+        <div class="hamburger-icon"><i class="fas fa-bars"></i></div>
         <nav role="navigation" class="nav-header">
                 <a href ="index.html">Main</a>
                 <a href ="blogs.html">Blogs</a>
@@ -27,12 +25,25 @@
     </header>
     <main>
         <h1 class="h1-main">Welcome to Myblog</h1>
-        <section class="blog-main">
-            <button class="pre-btn"><img src="images/arrowleft.png" alt=""></button>
-            <button class="nxt-btn"><img src="images/arrowright.png" alt=""></button>
-            <div class="blog-container">
+        <div class="main-welcome">
+            <p>
+                Welcome to my blog. Here i write about the process of constructing this blog. It's in part so that i have some raw material in the form of posts. 
+                This way it feels more authentic too, instead of just using lorem ipsum text. By writing posts and publishing them i also gain a greater understanding for the
+                process of writing blog. And since i document the process i can read through them when i am going to write the report. This stone sure kills a lot of birds. 
+            </p>
+        </div>
+            <div class="blog-card last-posts-card">
+        <h2 class="last-posts">last posts</h2>
             </div>
-        </section>
+        <section class="blog-main">
+            <button class="pre-btn"><img src="images/arrowleft.png"></button>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <div class="loader"></div>    
+                </div>   
+            </div>
+            <button class="nxt-btn"><img src="images/arrowright.png"></button>
+        </section> 
     </main>
     <footer>
         <p>By Jarl Erik Mathiesen</p>

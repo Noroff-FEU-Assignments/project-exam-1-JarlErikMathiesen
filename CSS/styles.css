@@ -1,12 +1,20 @@
 /* Global values */
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --yellow: #DEE208;
 
     /* CSS HEX */
+    --dark-gray: #292d25;
+    --gray: #5b645c;
     --black: #000000ff;
     --aureolin: #ECE90Eff;
     --jonquil: #FFD000ff;
+    --crt-green: #0F0;
+    
 
 }
 
@@ -16,33 +24,57 @@ body {
     flex-direction: column;
     margin: 0px;
     font-family: Urbanist, Verdana, Geneva, Tahoma, sans-serif;
-    background-image: url(/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg);
-    background-position: center;
+/*     background-image: url(/images/andras-vas-Bd7gNnWJBkU-unsplash.jpg);
+    background-position: center; */
+    background: black;
 }
 
-h1 {
-    font-family: Shrikhand, Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+h1, h2 {
+    font-family: Chakra Petch, Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header,
+footer,
+nav {
+    background-color: var(--gray);
+}
+
+nav {
+	display: block;
+	border: 4px solid var(--crt-green);
+	box-shadow: 0 0 10px var(--crt-green);
+	background-image: linear-gradient(rgb(41, 45, 37) 50%, rgb(46, 50, 41) 50%);
+	background-size: auto 4px;
+	border-radius: 25px;
 }
 
 header {
-	position: relative;
-	display: grid;
-	background-color: var(--aureolin);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
 	padding: 10px;
-	font-size: 1.5rem;
+	font-size: 2rem;
 }
 
 footer {
-    background-color: var(--aureolin);
     margin-top: auto;
 }
 
+a:link, a:visited {
+    text-decoration: none;
+    color: var(--crt-green);
+}
 
-
-a:link,
-a:visited {
-    text-decoration: none; 
-    color: inherit;
+.blog-card {
+	display: grid;
+	justify-items: center;
+	border-radius: 25px;
+	padding: 15px;
+	overflow: hidden;
+    border: 4px solid var(--crt-green);
+    box-shadow: 0 0 10px var(--crt-green);
+    background-image: linear-gradient(to bottom, #292d25 50%, #2e3229 50%);
+    background-size: auto 4px;
 }
 
 .logo {
@@ -52,12 +84,19 @@ a:visited {
 
 .hamburger-icon {
 	grid-row: 1;
+	color: var(--crt-green);
+    cursor: pointer;
+}
+
+main {
+    margin: 10px;
 }
 
 nav {
-    position: absolute;
-    background: var(--aureolin);
-    left: 0px;
+	position: absolute;
+	right: 10px;
+	top: 60px;
+    z-index: 3;
 }
 
 nav a {
@@ -66,18 +105,29 @@ nav a {
     font-size: 1rem;
 }
 
+.error {
+    font-size: 75px;
+    color: #fff;
+}
 
 .logo-main{
     width: 90px;
 }
 
-nav,
-#menu-checkbox {
-  display: none;
+
+nav {
+    display: none;
 }
 
-#menu-checkbox:checked ~ nav {
-	display: block;
+
+.loader {
+border: 16px solid #5b645c;
+border-top: 16px solid var(--crt-green);
+border-radius: 50%;
+width: 220px;
+height: 220px;
+animation: spin 2s linear infinite;
+margin: auto;
 }
 
 /* Main page */
@@ -86,15 +136,29 @@ nav,
     display: none;
 }
 
-.blog-card-main,
-.blog-card-blogs {
-    display: grid;
-    justify-items: center;
-    border-radius: 25px;
-    margin: 10px 20px 40px;
-    padding: 15px;
-    border: 2px solid;
-    background-color: #fff;
+.blog-main {
+    justify-content: center;
+}
+
+.blog-card-main {
+	margin: 10px 1% 40px;
+	align-content: baseline;
+	max-height: 400px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.blog-card-main h2, .blog-card-main p {
+    grid-column: 1/3;
+}
+
+.blog-card-main a:link,
+a:visited {
+    color: #72fd7c;
+}
+
+.hover-effect {
+    opacity: 0.6;
+    transition: 0.7s ease;
 }
 
 .h1-main {
@@ -102,37 +166,79 @@ nav,
     color: #fff;
 }
 
+.main-welcome {
+    color:#fff;
+    font-size: 20px;
+}
+
+.last-posts-card {
+    width: 80vw;
+    align-self: center;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Blogs page */
 
-#load-more-btn {
-    cursor: pointer;
+.blog-card-blogs {
+	margin: 10px 10px 40px;
+}
+
+.blog-card-blogs h2, .blog-card-blogs p {
+    grid-column: 1/3;
+}
+
+
+
+#load-more-btn,
+.submit-button {
+	cursor: pointer;
 	padding: 20px;
-	border: 2px solid var(--aureolin);
+	border: 4px solid var(--crt-green);
 	border-radius: 10px;
-	background-color: var(--aureolin);
-	font-family: Urbanist, Verdana, Geneva, Tahoma, sans-serif;
-	font-size: 20px;
+	background-color: var(--crt-green);
+	box-shadow: 0 0 10px var(--crt-green);
+	font-family: Chakra Petch, Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 25px;
 	font-weight: 700;
-	margin-bottom: 20px;
-    align-self: center;
+	margin: 10px;
+}
+
+#load-more-btn:hover,
+.submit-button:hover {
+    color: var(--crt-green);
+    background-image: linear-gradient(to bottom, #292d25 50%, #2e3229 50%);
+    background-size: auto 4px;
 }
 
 /* Blog page */
 
+.blogs-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 .blog-card-blog {
-    display: grid;
-    justify-items: center;
-    border-radius: 25px;
     margin: 10px 20px 40px;
-    padding: 15px;
-    border: 2px solid;
-    background-color: #fff;
+    position: relative;
+    color: var(--crt-green);
+}
+
+.blog-container-single {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .blog-image {
-    height: 30em;
-    border: 8px solid black;
-    cursor: pointer;
+	max-width: 60%;
+	max-height: 100%;
+	/* width: auto; */
+	/* height: auto; */
+	/* border: 8px solid black; */
+	cursor: pointer;
+	/* object-fit: cover; */
 }
 
 .modal {
@@ -188,9 +294,12 @@ form {
 form span {
 	font-size: 20px;
 	margin-bottom: 10px;
-	background-color: var(--aureolin);
 	padding: 10px;
 	border-radius: 10px;
+	border: 4px solid var(--crt-green);
+	box-shadow: 0 0 10px var(--crt-green);
+	background-image: linear-gradient(to bottom, #292d25 50%, #2e3229 50%);
+	background-size: auto 4px;
 }
 
 .input-style {
@@ -219,7 +328,7 @@ span label {
 	margin-bottom: 10px;
 }
 
-.submit-button {
+/* .submit-button {
 	cursor: pointer;
 	padding: 20px;
 	border: 2px solid var(--aureolin);
@@ -230,9 +339,9 @@ span label {
 	font-weight: 700;
 	margin-bottom: 20px;
     align-self: center;
-}
+} */
 
-@media (min-width: 300px) {
+@media (min-width: 400px) {
     
     .input-style {
         padding: 5px 100px 5px 5px;
@@ -240,12 +349,12 @@ span label {
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
 
-    header {
+/*     header {
         display: flex;
         justify-content: space-between;
-    }
+    } */
 
     nav {
         display: flex;
@@ -260,53 +369,53 @@ span label {
         display: inline-block;
     }
 
+    
     .pre-btn,
     .nxt-btn {
-      border: none;
-      width: 100px;
-      height: 100%;
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    
+
     .pre-btn {  
         background: transparent;
+        margin-right: 20px;
       }
       
     .nxt-btn {
-    right: 0;
-    background: transparent;
+        right: 0;
+        background: transparent;
+        margin-left: 20px;
     }
-
     
     .pre-btn img,
     .nxt-btn img {
       height: 6rem;
-      opacity: 0.5;
-    }
+      opacity: 0.7;
+      transition: 0.3s ease;
+    } 
     
     .pre-btn:hover img,
     .nxt-btn:hover img {
       opacity: 1;
-    }
+    } 
 
     .blog-main {
         position: relative;
         overflow: hidden;
+        display: flex;
     }
 
     .blog-container {
-        display:flex;
+        display: flex;
         overflow: hidden;
+        border-radius: 10px;
     }
 
     .blog-card-main {
-        overflow: hidden;
-        min-width: 450px;
+        min-width: 48%;
     }
 
     .blogs-container {
@@ -315,8 +424,27 @@ span label {
     }
 
     .blog-card-blogs {
-        overflow: hidden;
         max-width: 250px;
         max-height: 250px;
     }
 }
+
+
+    @media (min-width: 1300px) {
+
+        .blog-card-main {
+            min-width: 31.3%;
+        }
+    }
+
+    @media (min-width: 1700px) {
+
+        .blog-card-main {
+            min-width: 23%;
+        }
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }

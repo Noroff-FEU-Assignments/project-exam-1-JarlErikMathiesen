@@ -1,3 +1,7 @@
+import { toggleNavDisplay } from '/JS/functions.js';
+import { hamburgerMenu } from '/JS/functions.js';
+import { navDisplay } from '/JS/functions.js';
+
 const form = document.querySelector("#contactForm");
 const userName = document.querySelector("#name");
 const nameError = document.querySelector("#name-error");
@@ -62,3 +66,4 @@ const regEx = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
     return patternMatches;
 }
 
+toggleNavDisplay(hamburgerMenu, navDisplay, 700);

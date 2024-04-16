@@ -1,53 +1,76 @@
-import { getBlogPosts } from '/JS/getBlogPosts.js';
+import { getBlogPosts } from '/JS/functions.js';
+import { addHoverEffect } from '/JS/functions.js';
+import { toggleNavDisplay } from '/JS/functions.js';
+import { hamburgerMenu } from '/JS/functions.js';
+import { navDisplay } from '/JS/functions.js';
+
+
 const baseUrl = "http://jarlerm.no/wp-json/wp/v2/posts";
 const perPage = 20; 
 const urlEmbed = "?_embed";
 
-
 const blogPosts = document.querySelector(".blog-container");
+const nextButton = document.querySelector(".nxt-btn");
+const previousButton = document.querySelector(".pre-btn");
 
-const rightButton = document.querySelector(".nxt-btn");
-const leftButton = document.querySelector(".pre-btn");
 
-rightButton.addEventListener("click", function() {
-    blogPosts.scrollLeft += 450;
-});
+toggleNavDisplay(hamburgerMenu, navDisplay, 700);
 
-leftButton.addEventListener("click", function() {
-    blogPosts.scrollLeft -= 450;
-});
+
+function handleScrolling() {
+    let blogPostcontainer = blogPosts.getBoundingClientRect();
+    let blogPostWidth = blogPostcontainer.width;
+
+    function updateBlogPostWidth() {
+        blogPostcontainer = blogPosts.getBoundingClientRect();
+        blogPostWidth = blogPostcontainer.width;
+    }
+
+    window.addEventListener("resize", updateBlogPostWidth);
+
+    nextButton.addEventListener("click", function() {
+        blogPosts.scrollLeft += blogPostWidth;
+    });
+
+    previousButton.addEventListener("click", function() {
+        blogPosts.scrollLeft -= blogPostWidth;
+    });
+}
 
 async function displayBlogPosts() {
     try {
         const posts = await getBlogPosts(`${baseUrl}${urlEmbed}&per_page=${perPage}`);
         console.log(posts);
+        blogPosts.innerHTML = "";
+        
+        posts.forEach(function(post){
+            const postTitle = post.title.rendered;
+            const postContent = post.content.rendered;
+            const postId = post.id;
+            const postExcerpt = post.excerpt.rendered;
+            const postDate = post.date;
+            const postAuthor = post._embedded.author[0].name;
 
-        blogPosts.innerHTML ="";
+            const postDateClean = postDate.replace(/T/g, ' ');
 
+            console.log(postDateClean);
 
-        function createHtml(posts){
-            blogPosts.innerHTML = "";
-            posts.forEach(function(post){
-                const postTitle = post.title.rendered;
-                const postContent = post.content.rendered;
-                const postId = post.id;
-                
+            blogPosts.innerHTML += `
+                <a href="blog.html?id=${postId}" class="blog-card blog-card-main">
+                    <h2>${postTitle}</h2>
+                    <span>${postDateClean}</span>
+                    <span>${postAuthor}</span>
+                    ${postExcerpt}
+                </a>`;
 
-                blogPosts.innerHTML += `
-                                        <a href="blog.html?id=${postId}">
-                                        <div class = "blog-card-main">
-                                            <h2>${postTitle}</h2>
-                                                ${postContent}
-                                        </div>
-                                        </a>`
-                                        
-                                        
-            })
+            const blogCardMain = document.querySelectorAll(".blog-card-main");
+            addHoverEffect(blogCardMain);
+        });
 
-        }
-        createHtml(posts);
+        handleScrolling();
+        
     } catch (error) {
-        console.error(error);
+        blogPosts.innerHTML = `<h2 class="error">An error has occurred while loading the page</h2>`;
     }
 }
 
