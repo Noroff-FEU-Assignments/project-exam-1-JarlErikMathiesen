@@ -44,5 +44,6 @@ export function toggleNavDisplay(hamburger,navDisplay, breakpoint) {
     });
 }
 
+export const baseUrl = "https://jarlerm.no/wp-json/wp/v2/posts";
 export const hamburgerMenu = document.querySelector(".hamburger-icon");
 export const navDisplay = document.querySelector("nav");

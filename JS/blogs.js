@@ -3,8 +3,9 @@ import { addHoverEffect } from '/JS/functions.js';
 import { toggleNavDisplay } from '/JS/functions.js';
 import { hamburgerMenu } from '/JS/functions.js';
 import { navDisplay } from '/JS/functions.js';
+import { baseUrl } from '/JS/functions.js';
 
-const baseUrl = "https://jarlerm.no/wp-json/wp/v2/posts";
+
 const perPage = 10; 
 let currentPage = 1; 
 
