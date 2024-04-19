@@ -5,7 +5,7 @@ import { hamburgerMenu } from '/JS/functions.js';
 import { navDisplay } from '/JS/functions.js';
 
 
-const baseUrl = "http://jarlerm.no/wp-json/wp/v2/posts";
+const baseUrl = "https://jarlerm.no/wp-json/wp/v2/posts";
 const perPage = 20; 
 const urlEmbed = "?_embed";
 
