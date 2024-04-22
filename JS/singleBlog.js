@@ -24,6 +24,8 @@ async function displayBlogPosts() {
             const postTitle = posts.title.rendered;
             const postContent = posts.content.rendered;
             const postAuthor = posts._embedded.author[0].name;
+            const postDate = posts.date;
+            const postDateClean = postDate.replace(/T/g, ' ');
 
             console.log(posts);
         
@@ -38,7 +40,9 @@ async function displayBlogPosts() {
                                 <div id="imageModal" class="modal">
                                     <img class="modal-content" id="modalImage" src="${postImage}" alt="${postImageAltText}">
                                 </div>
-                                <img class="blog-image blog-card blog-card-blog" src="${postImage}" alt="${postImageAltText}" />
+                                <div class="blog-card-blog">
+                                    <img class="blog-image blog-card" src="${postImage}" alt="${postImageAltText}"/>
+                                </div>
                             </div>`;
             }
         
@@ -46,7 +50,8 @@ async function displayBlogPosts() {
                 ${imageHtml}
                 <div class="blog-card blog-card-blog">
                     <h2>${postTitle}</h2>
-                    <p>Author: ${postAuthor}</p>
+                    <span>${postAuthor}</span>
+                    <span>${postDateClean}</span>
                     ${postContent}
                     </div>
             `;

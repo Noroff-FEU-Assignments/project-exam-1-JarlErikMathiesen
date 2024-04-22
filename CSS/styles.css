@@ -137,7 +137,7 @@ margin: auto;
 }
 
 .blog-main {
-    justify-content: center;
+    display: grid;
 }
 
 .blog-card-main {
@@ -149,11 +149,6 @@ margin: auto;
 
 .blog-card-main h2, .blog-card-main p {
     grid-column: 1/3;
-}
-
-.blog-card-main a:link,
-a:visited {
-    color: #72fd7c;
 }
 
 .hover-effect {
@@ -179,6 +174,12 @@ a:visited {
     margin-right: auto;
 }
 
+.last-posts {
+	color: var(--crt-green);
+	font-size: 40px;
+	justify-self: center;
+}
+
 /* Blogs page */
 
 .blog-card-blogs {
@@ -188,8 +189,6 @@ a:visited {
 .blog-card-blogs h2, .blog-card-blogs p {
     grid-column: 1/3;
 }
-
-
 
 #load-more-btn,
 .submit-button {
@@ -220,25 +219,21 @@ a:visited {
     align-items: center;
   }
 
-.blog-card-blog {
-    margin: 10px 20px 40px;
-    position: relative;
-    color: var(--crt-green);
+  .blog-card-blog {
+	margin: 10px 20px 40px;
+	position: relative;
+	color: var(--crt-green);
+	align-content: baseline;
 }
 
 .blog-container-single {
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 15px;
 }
 
 .blog-image {
-	max-width: 60%;
-	max-height: 100%;
-	/* width: auto; */
-	/* height: auto; */
-	/* border: 8px solid black; */
+	max-width: 100%;
 	cursor: pointer;
-	/* object-fit: cover; */
 }
 
 .modal {
@@ -253,12 +248,13 @@ a:visited {
     overflow: auto;
   }
   
-  .modal-content {
+.modal-content {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	width: 450px;
+	max-width: 70vw;
 	transform: translate(-50%,-50%);
+	max-height: 65vh;
 }
   
   .close {
@@ -402,7 +398,7 @@ span label {
       opacity: 1;
     } 
 
-    .blog-main {
+    .blog-slider {
         position: relative;
         overflow: hidden;
         display: flex;
@@ -426,6 +422,10 @@ span label {
     .blog-card-blogs {
         max-width: 250px;
         max-height: 250px;
+    }
+
+    .blog-container-single {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
