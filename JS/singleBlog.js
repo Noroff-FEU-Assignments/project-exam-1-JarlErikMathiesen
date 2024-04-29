@@ -47,14 +47,14 @@ async function displayBlogPosts() {
             }
         
             blogPosts.innerHTML += `
-                ${imageHtml}
-                <div class="blog-card blog-card-blog">
-                    <h2>${postTitle}</h2>
-                    <span>${postAuthor}</span>
-                    <span>${postDateClean}</span>
-                    ${postContent}
-                    </div>
-            `;
+                                    ${imageHtml}
+                                    <div class="blog-card blog-card-blog">
+                                        <h2>${postTitle}</h2>
+                                        <span>${postAuthor}</span>
+                                        <span>${postDateClean}</span>
+                                        ${postContent}
+                                        </div>
+                                    `;
         }   
 
         createHtml(posts);

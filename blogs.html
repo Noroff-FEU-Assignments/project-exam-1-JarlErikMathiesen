@@ -36,13 +36,31 @@
     </header>
     <main>
         <h1 class="h1-main">Blogs</h1>
-            <div class="blogs-main">
+        <section class="blogs-select">
+            <form class="author-select">
+                <label for="author-select">Select Author</label>
+                <select id="author-select" name="filterselect">
+                    <option value="all" selected>Select an author</option>
+                    <option value="Jarl Erik Mathiesen">Jarl Erik Mathiesen</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </form>
+            <form class="sort-select">
+                <label for="sort-select">Sort</label>
+                <select id="sort-select" name="sortselect">
+                    <option value="" selected>Sort</option>
+                    <option value="new">Newest first</option>
+                    <option value="old">Oldest first</option>
+                </select>
+            </form>
+        </section>
+            <section class="blogs-main">
                 <div class="blogs-container">
                     <div id="load-animation" class="blog-card">
                         <div class="loader"></div>
-                    </div>  
+                    </div>
                 </div>
-            </div>
+            </section>
             <button id="load-more-btn">Load more</button>
     </main>
     <footer>
