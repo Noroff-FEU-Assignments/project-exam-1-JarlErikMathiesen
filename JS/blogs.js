@@ -13,10 +13,26 @@ const blogPosts = document.querySelector(".blogs-container");
 const loadMoreBtn = document.querySelector("#load-more-btn");
 const urlEmbed = "?_embed";
 
-async function fetchAllBlogPosts() {
+async function filterAllBlogPosts() {
     try {
        let allPosts = await getBlogPosts(`${baseUrl}${urlEmbed}&per_page=${perPage * 10}`); 
-        
+
+       const search = document.querySelector(".search");
+    
+       search.onkeyup = function(event) {
+           console.log(event);
+       
+           const searchValue = event.target.value.trim().toLowerCase();
+       
+           const filteredPostsByName = allPosts.filter(function(post) {           
+            if(post.title.rendered.toLowerCase().startsWith(searchValue)){
+            return true}
+           });
+           
+           blogPosts.innerHTML = "";
+           createHtml(filteredPostsByName);    
+       }
+
        const authorSelect = document.getElementById("author-select");
 
        authorSelect.addEventListener("change", function() {
@@ -34,36 +50,51 @@ async function fetchAllBlogPosts() {
            createHtml(filteredPosts);
 
            loadMoreBtn.style.display = "none";
-
-           const blogCardBlogs = document.querySelectorAll(".blog-card-blogs");
-
-           addHoverEffect(blogCardBlogs);
        });
        
+       const sortSelect = document.getElementById("sort-select");
+
+       sortSelect.addEventListener("change", function(){
+           const selectedSort = this.value;
+           
+           if (selectedSort === "new") {
+            allPosts.sort(function(a, b) {
+                return new Date(b.date) - new Date(a.date);
+            });
+           } else if (selectedSort === "old") {
+                allPosts.sort(function(a, b) {
+                return new Date(a.date) - new Date(b.date)
+            });
+           } else if (selectedSort === "nameasc") {
+                allPosts.sort(function(a, b) {
+                return a.title.rendered.localeCompare(b.title.rendered)
+            });
+           } else if (selectedSort === "namedesc") {
+                allPosts.sort(function(a, b) {
+                return b.title.rendered.localeCompare(a.title.rendered)
+            });
+           }
+           
+           blogPosts.innerHTML = "";
+           createHtml(allPosts);
+
+           loadMoreBtn.style.display = "none";
+       });
+
        function filterPosts(post, author) {
            const postAuthor = post._embedded.author[0].name;
            return postAuthor === author;
        }
 
-
-    const sortSelect = document.getElementById("sort-select");
-
-    sortSelect.addEventListener("change", function(){
-        
-        const selectedSort = this.value;
-        
-        console.log(selectedSort);
-    })
-
     } catch (error) {
         throw error;
     }
 }
-fetchAllBlogPosts();
+
+filterAllBlogPosts();
 
 
 
-// Move createHtml function outside displayBlogPosts function
 function createHtml(posts) {
     posts.forEach(function(post) {
         const postTitle = post.title.rendered;
@@ -80,6 +111,9 @@ function createHtml(posts) {
                 <span>${postAuthor}</span>
                 ${postExcerpt}
             </a>`;
+
+            const blogCardBlogs = document.querySelectorAll(".blog-card-blogs");
+            addHoverEffect(blogCardBlogs);
     });
 }
 
@@ -97,19 +131,19 @@ async function displayBlogPosts() {
         console.log(newPosts);
         console.log(newPosts.length);
 
-        posts = posts.concat(newPosts); // Merge new posts with existing posts
+        posts = posts.concat(newPosts);
 
         currentPage++;
 
         loadMoreBtn.addEventListener("click", displayBlogPosts);
 
-        blogPosts.innerHTML = ""; // Clear previous posts
+        blogPosts.innerHTML = "";
 
         createHtml(posts);
 
-        const blogCardBlogs = document.querySelectorAll(".blog-card-blogs");
+        /* const blogCardBlogs = document.querySelectorAll(".blog-card-blogs");
 
-        addHoverEffect(blogCardBlogs);
+        addHoverEffect(blogCardBlogs); */
 
     } catch (error) {
         blogPosts.innerHTML = `<h2 class="error">An error has occurred while loading the page</h2>`;

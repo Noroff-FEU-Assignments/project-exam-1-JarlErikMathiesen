@@ -24,7 +24,7 @@
 <body>
     <header>
         <a href="index.html" class="logo">
-            <img src="images/Myblog.png" alt="logo for myblog" class="logo-main">
+            <img src="images/Stellar Horizon.png" alt="logo for Stellar Horizon" class="logo-main">
         </a>
         <div class="hamburger-icon"><i class="fas fa-bars"></i></div>
         <nav role="navigation" class="nav-header">
@@ -36,7 +36,11 @@
     </header>
     <main>
         <h1 class="h1-main">Blogs</h1>
-        <section class="blogs-select">
+        <section class="blogs-sortselect">
+            <form class="search-bar">
+                <label for="search">Search</label>
+                <input class="search" placeholder="..."/>
+            </form>
             <form class="author-select">
                 <label for="author-select">Select Author</label>
                 <select id="author-select" name="filterselect">
@@ -51,6 +55,8 @@
                     <option value="" selected>Sort</option>
                     <option value="new">Newest first</option>
                     <option value="old">Oldest first</option>
+                    <option value="nameasc">A-Z</option>
+                    <option value="namedesc">Z-A</option>
                 </select>
             </form>
         </section>
