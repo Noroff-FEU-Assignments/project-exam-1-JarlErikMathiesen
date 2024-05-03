@@ -48,11 +48,12 @@ nav {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
 	padding: 10px;
 	font-size: 2rem;
+	align-items: center;
 }
 
 footer {
@@ -99,9 +100,9 @@ nav {
 }
 
 nav a {
-    display: block;
-    padding: 10px 20px;
-    font-size: 1rem;
+	display: block;
+	padding: 10px 20px;
+	font-size: 20px;
 }
 
 .error {
@@ -110,8 +111,7 @@ nav a {
 }
 
 .logo-main {
-	height: 36px;
-	margin-top: 8px;
+	height: 54px;
 }
 
 
