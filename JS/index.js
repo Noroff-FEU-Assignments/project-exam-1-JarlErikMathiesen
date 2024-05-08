@@ -6,7 +6,7 @@ import { navDisplay } from '/JS/functions.js';
 import { baseUrl } from '/JS/functions.js';
 
 
-const perPage = 20; 
+const perPage = 12; 
 const urlEmbed = "?_embed";
 
 const blogPosts = document.querySelector(".blog-container");

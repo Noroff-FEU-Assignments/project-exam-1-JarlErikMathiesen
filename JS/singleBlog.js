@@ -41,7 +41,7 @@ async function displayBlogPosts() {
                                     <img class="modal-content" id="modalImage" src="${postImage}" alt="${postImageAltText}">
                                 </div>
                                 <div class="blog-card-blog">
-                                    <img class="blog-image blog-card" src="${postImage}" alt="${postImageAltText}"/>
+                                    <img class="blog-image" src="${postImage}" alt="${postImageAltText}"/>
                                 </div>
                             </div>`;
             }

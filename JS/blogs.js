@@ -7,7 +7,7 @@ import { baseUrl } from '/JS/functions.js';
 
 const perPage = 10;
 let currentPage = 1;
-let posts = []; // Define posts array
+let posts = [];
 
 const blogPosts = document.querySelector(".blogs-container");
 const loadMoreBtn = document.querySelector("#load-more-btn");
@@ -104,8 +104,21 @@ function createHtml(posts) {
         const postAuthor = post._embedded.author[0].name;
         const postDateClean = postDate.replace(/T/g, ' ');
 
+        let imageHtml = '';
+
+        if (post._embedded && post._embedded["wp:featuredmedia"] && post._embedded["wp:featuredmedia"][0]) {
+                
+            let postImage = post._embedded["wp:featuredmedia"][0].link;
+
+            imageHtml = `<div>
+                            <img class="blogs-image" src="${postImage}"/>
+                        </div>`;
+            
+        }
+
         blogPosts.innerHTML += `
             <a href="blog.html?id=${postId}" class="blog-card-blogs blog-card">
+                ${imageHtml}
                 <h2>${postTitle}</h2>
                 <span>${postDateClean}</span>
                 <span>${postAuthor}</span>
@@ -118,7 +131,6 @@ function createHtml(posts) {
 }
 
 let loaderAnimation = document.getElementById("load-animation");
-
 
 async function displayBlogPosts() {
     try {
@@ -140,10 +152,6 @@ async function displayBlogPosts() {
         blogPosts.innerHTML = "";
 
         createHtml(posts);
-
-        /* const blogCardBlogs = document.querySelectorAll(".blog-card-blogs");
-
-        addHoverEffect(blogCardBlogs); */
 
     } catch (error) {
         blogPosts.innerHTML = `<h2 class="error">An error has occurred while loading the page</h2>`;
