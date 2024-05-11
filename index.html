@@ -17,7 +17,7 @@
     <meta name="description" content="The main page of Myblog">
     <link href="css/styles.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/cadf1bec62.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&amp;&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script defer type="module" src="JS/index.js"></script>
     <title>Myblog | Main page</title>
 </head>
@@ -36,21 +36,19 @@
     </header>
     <main>
         <h1 class="h1-main">Welcome to Stellar Horizon</h1>
-        <div class="main-welcome">
-            <p>
+            <p class="black-background-fade">
                 Welcome to The Stellar Horizon, where the vast expanse of space is our canvas and adventure knows no bounds. As the captain of this illustrious vessel, it is my honor to invite you on a journey beyond the stars. Here, amidst the silent symphony of galaxies, our crew's tales unfold, each entry a testament to the wonders and perils of interstellar exploration. From the gleaming spires of distant civilizations to the unfathomable mysteries of cosmic anomalies. 
             </p>
-        </div>
         <section class="blog-main">
-            <h2 class="last-posts">LAST POSTS</h2>
+            <h2 class="last-posts blog-card">LAST POSTS</h2>
             <div class="blog-slider">
-                <button class="pre-btn"><img src="images/arrowleft.png"></button>
+                <button class="pre-btn" aria-label="Move carousel to the left"><img src="images/arrowleft.png" alt=""></button>
                 <div class="blog-container">
                     <div class="blog-card">
                         <div class="loader"></div>    
                     </div>   
                 </div>
-                <button class="nxt-btn"><img src="images/arrowright.png"></button>
+                <button class="nxt-btn" aria-label="Move carousel to the right"><img src="images/arrowright.png" alt=""></button>
             </div>
         </section>
     </main>

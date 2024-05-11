@@ -4,6 +4,8 @@ import { toggleNavDisplay } from '/JS/functions.js';
 import { hamburgerMenu } from '/JS/functions.js';
 import { navDisplay } from '/JS/functions.js';
 import { baseUrl } from '/JS/functions.js';
+import { IfBlogCardHasImage } from '/JS/functions.js';
+import { imageHtml } from '/JS/functions.js';
 
 
 const perPage = 12; 
@@ -12,7 +14,6 @@ const urlEmbed = "?_embed";
 const blogPosts = document.querySelector(".blog-container");
 const nextButton = document.querySelector(".nxt-btn");
 const previousButton = document.querySelector(".pre-btn");
-
 
 toggleNavDisplay(hamburgerMenu, navDisplay, 700);
 
@@ -45,22 +46,22 @@ async function displayBlogPosts() {
         
         posts.forEach(function(post){
             const postTitle = post.title.rendered;
-            const postContent = post.content.rendered;
             const postId = post.id;
             const postExcerpt = post.excerpt.rendered;
             const postDate = post.date;
             const postAuthor = post._embedded.author[0].name;
-
             const postDateClean = postDate.replace(/T/g, ' ');
 
-            console.log(postDateClean);
+
+            IfBlogCardHasImage(post);
 
             blogPosts.innerHTML += `
                 <a href="blog.html?id=${postId}" class="blog-card blog-card-main">
-                    <h2>${postTitle}</h2>
-                    <span>${postDateClean}</span>
-                    <span>${postAuthor}</span>
-                    ${postExcerpt}
+                        ${imageHtml}
+                        <h2>${postTitle}</h2>
+                        <span>${postDateClean}</span>
+                        <span>${postAuthor}</span>
+                        ${postExcerpt}
                 </a>`;
 
             const blogCardMain = document.querySelectorAll(".blog-card-main");

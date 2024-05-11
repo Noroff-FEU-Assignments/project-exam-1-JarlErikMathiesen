@@ -4,6 +4,8 @@ import { toggleNavDisplay } from '/JS/functions.js';
 import { hamburgerMenu } from '/JS/functions.js';
 import { navDisplay } from '/JS/functions.js';
 import { baseUrl } from '/JS/functions.js';
+import { IfBlogCardHasImage } from '/JS/functions.js';
+import { imageHtml } from '/JS/functions.js';
 
 const perPage = 10;
 let currentPage = 1;
@@ -93,8 +95,6 @@ async function filterAllBlogPosts() {
 
 filterAllBlogPosts();
 
-
-
 function createHtml(posts) {
     posts.forEach(function(post) {
         const postTitle = post.title.rendered;
@@ -104,17 +104,7 @@ function createHtml(posts) {
         const postAuthor = post._embedded.author[0].name;
         const postDateClean = postDate.replace(/T/g, ' ');
 
-        let imageHtml = '';
-
-        if (post._embedded && post._embedded["wp:featuredmedia"] && post._embedded["wp:featuredmedia"][0]) {
-                
-            let postImage = post._embedded["wp:featuredmedia"][0].link;
-
-            imageHtml = `<div>
-                            <img class="blogs-image" src="${postImage}"/>
-                        </div>`;
-            
-        }
+        IfBlogCardHasImage(post);
 
         blogPosts.innerHTML += `
             <a href="blog.html?id=${postId}" class="blog-card-blogs blog-card">

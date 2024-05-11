@@ -54,7 +54,7 @@ async function displayBlogPosts() {
                                         <span>${postDateClean}</span>
                                         ${postContent}
                                         </div>
-                                    `;
+                                    `;                       
         }   
 
         createHtml(posts);

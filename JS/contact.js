@@ -1,6 +1,7 @@
 import { toggleNavDisplay } from '/JS/functions.js';
 import { hamburgerMenu } from '/JS/functions.js';
 import { navDisplay } from '/JS/functions.js';
+import { baseUrl } from '/JS/baseUrl.js'; // Import the baseUrl for WordPress API
 
 const form = document.querySelector("#contactForm");
 const userName = document.querySelector("#name");
@@ -15,55 +16,65 @@ const messageError = document.querySelector("#message-error");
 const userEmail = document.querySelector("#email");
 const emailError = document.querySelector("#email-error");
 
-
-function validateForm() {
-
+function validateForm(event) {
     event.preventDefault();
 
-    if (checkLength(userName.value, 5) === true) {
-        nameError.style.display = "none";}
+    // Check form fields
+    const isNameValid = checkLength(userName.value, 5);
+    const isSubjectValid = checkLength(userSubject.value, 15);
+    const isMessageValid = checkLength(userMessage.value, 25);
+    const isEmailValid = validateEmail(userEmail.value);
 
-    else {
-        nameError.style.display = "block";
-    }
+    // Display error messages
+    nameError.style.display = isNameValid ? "none" : "block";
+    subjectError.style.display = isSubjectValid ? "none" : "block";
+    messageError.style.display = isMessageValid ? "none" : "block";
+    emailError.style.display = isEmailValid ? "none" : "block";
 
-    if (checkLength(userSubject.value, 15) === true) {
-        subjectError.style.display = "none";}
-
-    else {
-        subjectError.style.display = "block";
-    }
-
-    if (checkLength(userMessage.value, 25) === true) {
-        messageError.style.display = "none";}
-
-    else {
-        messageError.style.display = "block";
-    }
-
-    if (validateEmail(userEmail.value) === true){
-        emailError.style.display = "none";
-    }
-
-    else {
-        emailError.style.display = "block";
+    // If all fields are valid, send data to WordPress
+    if (isNameValid && isSubjectValid && isMessageValid && isEmailValid) {
+        sendDataToWordPress();
     }
 }
 
 form.addEventListener("submit", validateForm);
 
+function sendDataToWordPress() {
+    const formData = {
+        author_name: userName.value,
+        email: userEmail.value,
+        title: userSubject.value,
+        content: userMessage.value
+    };
+
+    fetch('https://www.jarlerm.no/wp-json/wp/v2/comments?', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Message submitted successfully!');
+            form.reset(); // Reset the form
+        } else {
+            alert('Failed to submit message. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again later.');
+    });
+}
+
 function checkLength(value, len) {
-    if (value.trim().length > len) {
-        return true;
-    } else {
-        return false;
-    }
+    return value.trim().length >= len;
 }
 
 function validateEmail(email) {
-const regEx = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    const patternMatches = regEx.test(email);
-    return patternMatches;
+    const regEx = /^([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+    return regEx.test(email);
 }
 
 toggleNavDisplay(hamburgerMenu, navDisplay, 700);

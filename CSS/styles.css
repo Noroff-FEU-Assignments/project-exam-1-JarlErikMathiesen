@@ -15,8 +15,6 @@
     --jonquil: #FFD000ff;
     --crt-green: #0F0;
     --silver: #c7c7c7;
-    
-
 }
 
 body {
@@ -30,14 +28,12 @@ body {
 }
 
 h1, h2 {
-    font-family: Urbanist, Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Audiowide, Urbanist, Verdana, Geneva, Tahoma, sans-serif;
 }
 
-/* header,
-footer,
-nav {
-    background-color: var(--gray);
-} */
+h1 {
+    font-size: 45px;
+}
 
 nav {
 	display: block;
@@ -66,20 +62,6 @@ a:link, a:visited {
     color: var(--crt-green);
 }
 
-/* .blog-card {
-	display: grid;
-	justify-items: center;
-	border-radius: 25px;
-	padding: 15px;
-	overflow: hidden;
-	border: 4px solid var(--crt-green);
-	box-shadow: 0 0 10px var(--crt-green);
-	background-image: linear-gradient(to bottom, #292d25 50%, #2e3229 50%);
-	background-size: auto 4px;
-	gap: 0px 25px;
-}
- */
-
  .blog-card {
     display: grid;
     justify-items: center;
@@ -94,6 +76,8 @@ a:link, a:visited {
 	box-shadow: 0 0 10px var(--crt-green);
 }
 
+
+
 .blog-card:before {
     content: '';
     position: absolute;
@@ -105,6 +89,20 @@ a:link, a:visited {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.3), inset 0 0 30px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(0, 0, 0, 0.5);
 }
 
+.blog-card-blogs h2, 
+.blog-card-blogs p,
+.blog-card-blogs span,
+.blog-card-main h2,
+.blog-card-main p,
+.blog-card-main span {
+    z-index: 2;
+}
+
+.blog-card-image {
+	position: absolute;
+	width: 33em;
+	opacity: 0.2;
+}
 
 .logo {
 	grid-column: 2;
@@ -153,7 +151,6 @@ nav {
     display: none;
 }
 
-
 .loader {
 border: 16px solid #5b645c;
 border-top: 16px solid var(--crt-green);
@@ -186,27 +183,34 @@ margin: auto;
 }
 
 .h1-main {
-    text-align: center;
-    color: #fff;
+	text-align: center;
+	color: #fff;
+	background-color: #000000;
+	font-size: 45px;
+	border-radius: 5px;
 }
 
-.main-welcome {
-    color:#fff;
+.black-background-fade {
+	text-align: center;
+	color: #fff;
+	background-color: #000000;
+	border-radius: 25px;
+	padding: 10px;
+	max-width: 61em;
+	background: linear-gradient(#0000003d,#000,#000,#000,#000, #0000003d);
+	margin: auto auto;
+	font-size: 20px;
+}
+
+.black-background-fade p {
     font-size: 20px;
-}
-
-.last-posts-card {
-    width: 80vw;
-    align-self: center;
-    justify-self: center;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .last-posts {
 	color: var(--crt-green);
 	font-size: 40px;
 	justify-self: center;
+	background: linear-gradient(#0000003d,#000,#000,#000,#000, #0000003d);
 }
 
 /* Blogs page */
@@ -220,29 +224,11 @@ margin: auto;
     grid-column: 1/3;
 }
 
-
-.blog-card-blogs h2, 
-.blog-card-blogs p,
-.blog-card-blogs span {
-    z-index: 2;
-}
-
-
-.blogs-image {
-	position: absolute;
-	width: 27em;
-	left: 0px;
-	top: 0px;
-	opacity: 0.2;
-
-}
-
 .blogs-sortselect {
 	display: grid;
 	gap: 10px;
 	margin: 30px 20px 15px 10px;
 }
-
 
 #load-more-btn,
 .submit-button {
@@ -300,10 +286,6 @@ margin: auto;
     border-radius: 25px;
 }
 
-.body-image-blog {
-    background-image: url(../images/ScifiSpaceShip3.jpg);
-}
-
 .modal {
     display: none;
     position: fixed;
@@ -334,18 +316,16 @@ margin: auto;
     cursor: pointer;
   }
 
-.search,
+#search,
 #author-select,
 #sort-select {
     height: 35px;
     font-size: 15px;
 }
 
-
-
 /* Contact page */
 
-.main-contact {
+.contact-form {
     display: grid;
     justify-content: center;
     justify-items: center;
@@ -382,7 +362,8 @@ form span {
 }
 
 .input-message {
-	padding-bottom: 200px;
+	border-radius: 10px;
+	padding: 5px 5px 200px 5px;
 }
 
 .form-error {
@@ -446,6 +427,10 @@ span label {
         padding: 5px 100px 5px 5px;
     }
 
+    .input-message {
+        padding: 5px 100px 200px 5px;
+    }
+
     .blogs-sortselect {
         display: grid;
         grid-template-columns: auto auto;
@@ -470,8 +455,6 @@ span label {
 }
 
 @media (min-width: 700px) {
-
-
     nav {
         display: flex;
         position:static; 
@@ -550,7 +533,7 @@ span label {
     .blog-card-blog {
         grid-column: 2;
     }
-    
+
 }
 
     @media (min-width: 1300px) {
