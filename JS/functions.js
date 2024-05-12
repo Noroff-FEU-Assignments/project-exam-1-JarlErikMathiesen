@@ -50,7 +50,7 @@ export function IfBlogCardHasImage(imagePost){
         let postImageAltText = imagePost._embedded["wp:featuredmedia"][0].alt_text;
 
         imageHtml = `
-                        <img class="blog-card-image" src="${postImage}" alt="${postImageAltText}"/>
+                    <img class="blog-card-image" src="${postImage}" alt="${postImageAltText}"/>
                     `;
     }
     else {

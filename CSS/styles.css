@@ -62,7 +62,7 @@ a:link, a:visited {
     color: var(--crt-green);
 }
 
- .blog-card {
+.blog-card {
     display: grid;
     justify-items: center;
     border-radius: 25px;
@@ -117,7 +117,7 @@ a:link, a:visited {
 
 .hover-effect {
     opacity: 0.6;
-    transition: 0.7s ease;
+    transition: 0.8s ease;
 }
 
 main {
@@ -187,7 +187,11 @@ margin: auto;
 	color: #fff;
 	background-color: #000000;
 	font-size: 45px;
-	border-radius: 5px;
+}
+
+.h1-card {
+    border-radius: 25px;
+    border: 2px solid #fff;
 }
 
 .black-background-fade {
@@ -197,13 +201,8 @@ margin: auto;
 	border-radius: 25px;
 	padding: 10px;
 	max-width: 61em;
-	background: linear-gradient(#0000003d,#000,#000,#000,#000, #0000003d);
 	margin: auto auto;
 	font-size: 20px;
-}
-
-.black-background-fade p {
-    font-size: 20px;
 }
 
 .last-posts {
@@ -332,7 +331,10 @@ margin: auto;
 }
 
 label {
-    color: #fff;
+	color: #fff;
+	background-color: black;
+	font-size: 20px;
+	font-weight: 500;
 }
 
 input {
@@ -403,8 +405,6 @@ span label {
 }
 
 .h1-main-about {
-	text-align: center;
-	color: #fff;
 	grid-column: 1/3;
 }
 
@@ -441,19 +441,6 @@ span label {
     }
 }
 
-@media (min-width: 500px) {
-
-    .about-image {
-        margin: 10px 20px 40px;
-    }
-
-    .about-main {
-        display:grid;
-        gap: 15px;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
 @media (min-width: 700px) {
     nav {
         display: flex;
@@ -462,6 +449,16 @@ span label {
 
     nav a {
         display: inline-block;
+    }
+
+    .about-image {
+        margin: 10px 20px 0px;
+    }
+
+    .about-main {
+        display:grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr;
     }
 
     .hamburger-icon {

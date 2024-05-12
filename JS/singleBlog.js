@@ -26,8 +26,6 @@ async function displayBlogPosts() {
             const postAuthor = posts._embedded.author[0].name;
             const postDate = posts.date;
             const postDateClean = postDate.replace(/T/g, ' ');
-
-            console.log(posts);
         
             let imageHtml = '';
         

@@ -19,10 +19,9 @@ async function filterAllBlogPosts() {
     try {
        let allPosts = await getBlogPosts(`${baseUrl}${urlEmbed}&per_page=${perPage * 10}`); 
 
-       const search = document.querySelector(".search");
+       const search = document.querySelector("#search");
     
        search.onkeyup = function(event) {
-           console.log(event);
        
            const searchValue = event.target.value.trim().toLowerCase();
        
@@ -129,9 +128,6 @@ async function displayBlogPosts() {
         if (newPosts.length === 0 || newPosts.length < perPage) {
             loadMoreBtn.style.display = "none";
         }
-
-        console.log(newPosts);
-        console.log(newPosts.length);
 
         posts = posts.concat(newPosts);
 
