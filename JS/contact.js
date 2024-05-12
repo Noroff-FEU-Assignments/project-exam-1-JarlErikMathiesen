@@ -1,3 +1,7 @@
+import { toggleNavDisplay } from '/JS/functions.js';
+import { hamburgerMenu } from '/JS/functions.js';
+import { navDisplay } from '/JS/functions.js';
+
 const form = document.querySelector("#contactForm");
 const userName = document.querySelector("#name");
 const nameError = document.querySelector("#name-error");
@@ -11,6 +15,7 @@ const messageError = document.querySelector("#message-error");
 const userEmail = document.querySelector("#email");
 const emailError = document.querySelector("#email-error");
 
+toggleNavDisplay(hamburgerMenu, navDisplay, 700);
 
 function validateForm() {
 

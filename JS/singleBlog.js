@@ -10,7 +10,6 @@ const blogPosts = document.querySelector(".blog-container-single");
 
 const urlPar = new URLSearchParams(document.location.search);
 const id = urlPar.get("id");
-const urlSingle = baseUrl + "/" + id + "?_embed";
 const urlEmbed = "?_embed";
 
 

@@ -41,7 +41,6 @@ function handleScrolling() {
 async function displayBlogPosts() {
     try {
         const posts = await getBlogPosts(`${baseUrl}${urlEmbed}&per_page=${perPage}`);
-        console.log(posts);
         blogPosts.innerHTML = "";
         
         posts.forEach(function(post){
